@@ -1,4 +1,4 @@
-<script defer>
+
     document.addEventListener("DOMContentLoaded", function() {
         const inputField = document.getElementById('paste-url-input');
         const dropdown = document.querySelector('.url-scanner');
@@ -88,4 +88,4 @@
             }
         });
     });
-</script>
+
