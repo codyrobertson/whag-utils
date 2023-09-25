@@ -1,0 +1,33 @@
+<!-- Responsive Typography -->
+
+/* Desktop and above */
+html { font-size: 16px; }
+/*Tablet */
+@media (max-width: 991px) { html { font-size: 16px; } }
+/* Mobile - Landcape */
+@media (max-width: 767px) { html { font-size: 16px; } }
+/* Mobile - Portrait */
+@media (max-width: 479px) { html { font-size: 16px; } }
+
+/* Mobile - Portrait */
+@media (max-width: 479px) {
+    h1 { font-size: 2.35rem; }
+    h2 { font-size: 1.9586rem; }
+    h3 { font-size: 1.5671rem; }
+    h4 { font-size: 1.3714rem; }
+    h5 { font-size: 1.0779rem; }
+    h6 { font-size: 1rem; }
+}
+
+/* Balance line breaks */
+p, h1, h2, h3, h4, h5, h6 {
+    word-wrap: break-word;
+    hyphens: auto;
+}
+h1, h2, h3, h4, h5, h6 {
+    max-width: 30ch; /* or 25ch based on your preference */
+}
+
+p, .body-text { /* you can adjust the selector based on your structure */
+    max-width: 60ch;
+}
