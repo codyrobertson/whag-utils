@@ -1,4 +1,3 @@
-<!-- Append Form Value To URL String -->
 document.addEventListener("DOMContentLoaded", function() {
     var form = document.getElementById('wf-form-hero-url-input');
     var input = document.getElementById('paste-url-input');
