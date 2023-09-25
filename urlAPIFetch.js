@@ -1,12 +1,14 @@
-
 // Function to fetch data from the API and populate the data on the page
 function fetchDataAndPopulate() {
     // Extract the URL from the query parameter
     var urlParams = new URLSearchParams(window.location.search);
-    var inputURL = urlParams.get('url');
+    var inputURL = urlParams.get('pasteURLinput'); // Changed from 'url' to 'pasteURLinput'
+
+    // Decode the URL
+    var decodedURL = decodeURIComponent(inputURL);
 
     // Fetch data from the API
-    fetch(`https://jsonlink.io/api/extract?url=${inputURL}`)
+    fetch(`https://jsonlink.io/api/extract?url=${decodedURL}`)
         .then(response => response.json())
         .then(data => {
             // Populate the data on the page
