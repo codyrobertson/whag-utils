@@ -8,8 +8,8 @@
         let count = 1;
         let rafId;
 
-        const ANIMATION_ENTRANCE = 350;
-        const ROW_DELAY = 350;
+        const ANIMATION_ENTRANCE = 400;
+        const ROW_DELAY = 650;
 
         function isValidURL(string) {
             const pattern = new RegExp(
