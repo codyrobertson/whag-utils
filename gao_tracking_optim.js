@@ -53,14 +53,7 @@
 
         // Function to handle form submission
         function handleFormSubmission() {
-            console.log("Handling form submission...");
-            if (multiSelectElement) {
-                var selectedOptions = Array.from(multiSelectElement.selectedOptions).map(function(option) {
-                    return option.value;
-                }).join(', ');
-                window.ga && ga('send', 'event', 'user_acquisition', 'form_submission', 'how_user_found_out', selectedOptions);
-                console.log("Form submission handled. Selected options: ", selectedOptions);
-            }
+            console.log("Form submission handled.");
         }
 
         // Event delegation for click events
@@ -70,6 +63,13 @@
             var action = event.target.getAttribute('data-card-action') || event.target.getAttribute('data-event-action');
             var label = event.target.getAttribute('data-card-label') || event.target.getAttribute('data-event-label');
             var url = event.target.getAttribute('data-card-url');
+            // Check if the clicked element is a link
+            if (event.target.tagName === 'A') {
+                // If it's a link, the label is the text value of the link
+                label = event.target.textContent;
+                // data-url is the URL the link leads to
+                url = event.target.href;
+            }
             if (category) {
                 window.ga && ga('send', 'event', category, action, label, { 'page': url });
                 console.log("Click event handled. Category: ", category, " Action: ", action, " Label: ", label, " URL: ", url);
@@ -96,6 +96,7 @@
         handleFormSubmission();
         console.log("Initialization complete.");
     });
+
 
 
 
