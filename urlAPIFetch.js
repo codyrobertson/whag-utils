@@ -46,17 +46,22 @@ function populateData(responseData) {
 
 // Function to populate the form with hidden inputs
 function populateForm(responseData) {
+    console.log("Populating form with response data: ", responseData);
     const form = document.querySelector('[data-sysflow-query-form="pasteURLinput"]');
     if (form) {
+        console.log("Form found. Appending hidden inputs.");
         appendHiddenInput(form, 'url', responseData.url);
         appendHiddenInput(form, 'title', responseData.title);
         appendHiddenInput(form, 'description', responseData.description);
         appendHiddenInput(form, 'image', responseData.images ? responseData.images[0] : null);
+    } else {
+        console.log("Form not found.");
     }
 }
 
 // Function to append hidden input to form
 function appendHiddenInput(form, name, value) {
+    console.log(`Appending hidden input to form. Name: ${name}, Value: ${value}`);
     const input = document.createElement('input');
     input.type = 'hidden';
     input.name = name;
@@ -66,5 +71,6 @@ function appendHiddenInput(form, name, value) {
 
 // Call the function to fetch the data and populate the data on page load
 document.addEventListener('DOMContentLoaded', function () {
+    console.log("DOMContentLoaded event fired. Calling fetchDataAndPopulate function.");
     fetchDataAndPopulate();
 });
