@@ -32,7 +32,7 @@
     window.addEventListener('DOMContentLoaded', function() {
         console.log("DOM loaded. Initializing event handlers...");
         // Cache DOM elements to avoid repetitive queries
-        var formElement = document.querySelector('#yourFormId');
+        var formElement = document.querySelector('#Join-Whag-Form-Block');
         var multiSelectElement = document.querySelector('#multiSelectId');
         var referrerElement = document.querySelector('[data-referrer]');
 
@@ -48,7 +48,7 @@
             }
             referrerElement.setAttribute("data-referrer", document.referrer);
             referrerElement.setAttribute("data-referrer-page", new URL(document.referrer).pathname);
-            console.log("Referrer data handled.");
+            console.log("Referrer data handled. Referrer: ", document.referrer, " Referrer Page: ", new URL(document.referrer).pathname);
         }
 
         // Function to handle form submission
@@ -59,8 +59,8 @@
                     return option.value;
                 }).join(', ');
                 window.ga && ga('send', 'event', 'user_acquisition', 'form_submission', 'how_user_found_out', selectedOptions);
+                console.log("Form submission handled. Selected options: ", selectedOptions);
             }
-            console.log("Form submission handled.");
         }
 
         // Event delegation for click events
@@ -72,8 +72,8 @@
             var url = event.target.getAttribute('data-card-url');
             if (category) {
                 window.ga && ga('send', 'event', category, action, label, { 'page': url });
+                console.log("Click event handled. Category: ", category, " Action: ", action, " Label: ", label, " URL: ", url);
             }
-            console.log("Click event handled.");
         });
 
         // Event delegation for form submission events
@@ -85,8 +85,8 @@
                 var label = event.target.getAttribute('data-form-label');
                 if (category) {
                     window.ga && ga('send', 'event', category, action, label);
+                    console.log("Form submission event handled. Category: ", category, " Action: ", action, " Label: ", label);
                 }
-                console.log("Form submission event handled.");
             });
         }
 
@@ -96,5 +96,6 @@
         handleFormSubmission();
         console.log("Initialization complete.");
     });
+
 
 
