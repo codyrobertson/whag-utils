@@ -15,3 +15,5 @@ This project includes several JavaScript and CSS files that work together to pro
 6. `urlParameterDisplayToggle.js`: This script handles the display of elements based on the presence of URL parameters.
 
 7. `gao_tracking_optim.js`: This script is responsible for Google Analytics and Google Tag Manager integration. It also handles form submissions and click events, sending relevant data to Google Analytics.
+
+8. `urlQueryParamParse.js`: This script is a utility for parsing URL query parameters. It provides functionality to get, set, and remove parameters from the query string. It also includes a feature to append hidden input fields to forms based on the query parameters.
