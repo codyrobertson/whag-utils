@@ -24,8 +24,13 @@ p, h1, h2, h3, h4, h5, h6 {
     word-wrap: break-word;
     hyphens: auto;
 }
-h1, h2, h3, h4, h5, h6 {
-    max-width: 30ch; /* or 25ch based on your preference */
+
+/* Balance text wrapping for headings when supported by the browser */
+@supports (text-wrap: balance) {
+    h1, h2, h3, h4, h5, h6 {
+        text-wrap: balance;
+        max-width: 30ch; /* or 25ch based on your preference */
+    }
 }
 
 p, .body-text { /* you can adjust the selector based on your structure */

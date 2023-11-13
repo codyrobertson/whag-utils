@@ -1,6 +1,6 @@
 // This function reports a conversion to Google Analytics
-function gtag_report_conversion(url) {
-    var callback = function () {
+const gtag_report_conversion = (url) => {
+    const callback = () => {
       if (url) {
         window.location = url;
       }
@@ -13,14 +13,14 @@ function gtag_report_conversion(url) {
   }
   
   // This function initializes Google Analytics and Google Tag Manager
-  window.onload = function() {
+  window.onload = () => {
       console.log("Window loaded. Initializing Google Analytics and Google Tag Manager...");
   
       // Google Tag Manager initialization
-      (function(w,d,s,l,i){
+      ((w,d,s,l,i) => {
           console.log("Initializing Google Tag Manager...");
           w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
-          var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
+          const f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
           j.async=true;
           j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
           f.parentNode.insertBefore(j,f);
@@ -28,15 +28,15 @@ function gtag_report_conversion(url) {
       })(window,document,'script','dataLayer','GTM-KK9R4V5');
   
       // Google tag (gtag.js) initialization
-      (function() {
+      (() => {
           console.log("Initializing Google tag...");
-          var script = document.createElement('script');
+          const script = document.createElement('script');
           script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DSSHY4WKD2';
           script.async = true;
           document.head.appendChild(script);
   
           window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
+          const gtag = () => {dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-DSSHY4WKD2');
           console.log("Google tag initialized.");
@@ -44,14 +44,14 @@ function gtag_report_conversion(url) {
   };
   
   // This function initializes event handlers when the DOM is fully loaded
-  window.addEventListener('DOMContentLoaded', function() {
+  window.addEventListener('DOMContentLoaded', () => {
       console.log("DOM loaded. Initializing event handlers...");
-      var formElement = document.querySelector('#Join-Whag-Form-Block');
-      var multiSelectElement = document.querySelector('#multiSelectId');
-      var referrerElement = document.querySelector('[data-referrer]');
+      const formElement = document.querySelector('#Join-Whag-Form-Block');
+      const multiSelectElement = document.querySelector('#multiSelectId');
+      let referrerElement = document.querySelector('[data-referrer]');
   
       // This function handles referrer data
-      function handleReferrerData() {
+      const handleReferrerData = () => {
           console.log("Handling referrer data...");
           if (!referrerElement) {
               referrerElement = document.createElement('div');
@@ -66,18 +66,18 @@ function gtag_report_conversion(url) {
       }
   
       // This function handles form submission
-      function handleFormSubmission() {
+      const handleFormSubmission = () => {
           console.log("Form submission handled.");
           gtag_report_conversion();
       }
   
       // This function handles click events
-      document.body.addEventListener('click', function(event) {
+      document.body.addEventListener('click', (event) => {
           console.log("Handling click event...");
-          var category = event.target.getAttribute('data-card-category') || event.target.getAttribute('data-event-category');
-          var action = event.target.getAttribute('data-card-action') || event.target.getAttribute('data-event-action');
-          var label = event.target.getAttribute('data-card-label') || event.target.getAttribute('data-event-label');
-          var url = event.target.getAttribute('data-card-url');
+          const category = event.target.getAttribute('data-card-category') || event.target.getAttribute('data-event-category');
+          const action = event.target.getAttribute('data-card-action') || event.target.getAttribute('data-event-action');
+          let label = event.target.getAttribute('data-card-label') || event.target.getAttribute('data-event-label');
+          let url = event.target.getAttribute('data-card-url');
           if (event.target.tagName === 'A') {
               label = event.target.textContent;
               url = event.target.href;
@@ -90,11 +90,11 @@ function gtag_report_conversion(url) {
   
       // This function handles form submission events
       if (formElement) {
-          formElement.addEventListener('submit', function(event) {
+          formElement.addEventListener('submit', (event) => {
               console.log("Handling form submission event...");
-              var category = event.target.getAttribute('data-form-category');
-              var action = event.target.getAttribute('data-form-action');
-              var label = event.target.getAttribute('data-form-label');
+              const category = event.target.getAttribute('data-form-category');
+              const action = event.target.getAttribute('data-form-action');
+              const label = event.target.getAttribute('data-form-label');
               if (category) {
                   window.ga && ga('send', 'event', category, action, label);
                   console.log("Form submission event handled. Category: ", category, " Action: ", action, " Label: ", label);

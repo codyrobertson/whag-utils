@@ -1,0 +1,24 @@
+{
+  "name": "whag-utils",
+  "version": "1.0.0",
+  "description": "This project is a web application that includes several JavaScript and CSS files, which are minified and bundled using Gulp. Here's an overview of the project structure and build process:",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codyrobertson/whag-utils.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codyrobertson/whag-utils/issues"
+  },
+  "homepage": "https://github.com/codyrobertson/whag-utils#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}

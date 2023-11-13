@@ -4,6 +4,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Check the URL parameters
     const urlParams = new URLSearchParams(window.location.search);
+    const hasParams = urlParams.toString();
+
+    // Function to toggle display based on condition
+    const toggleDisplay = (element, condition) => {
+        if (condition) {
+            element.style.display = 'block';
+            element.classList.remove('Hidden');
+        } else {
+            element.style.display = 'none';
+            element.classList.add('Hidden');
+        }
+    };
 
     // Iterate over each element
     replaceElements.forEach(element => {
@@ -12,26 +24,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Logic for ref-form
         if (event === 'ref-form') {
-            // If URL has parameters, show the element
-            if (urlParams.toString()) {
-                element.style.display = 'block';
-                element.classList.remove('Hidden');
-            } else {
-                element.style.display = 'none';
-                element.classList.add('Hidden');
-            }
+            toggleDisplay(element, hasParams);
         }
 
         // Logic for ref-nav
         if (event === 'ref-nav') {
-            // If URL has no parameters, show the element
-            if (!urlParams.toString()) {
-                element.style.display = 'block';
-                element.classList.remove('Hidden');
-            } else {
-                element.style.display = 'none';
-                element.classList.add('Hidden');
-            }
+            toggleDisplay(element, !hasParams);
         }
     });
 });

@@ -1,19 +1,66 @@
 # Project Documentation
 
-This project includes several JavaScript and CSS files that work together to provide a comprehensive functionality for the application. Here is a brief overview of each file:
+This project is a web application that includes several JavaScript and CSS files, which are minified and bundled using Gulp. Here's an overview of the project structure and build process:
 
-1. `appendURLToURL.js`: This script handles the functionality of appending a URL to another URL upon a button click event.
+Directory Structure
 
-2. `responsiveType.css`: This CSS file contains media queries to handle typography responsiveness across different screen sizes.
+```
+.
+├── README.md
+├── build
+└── src
+    ├── scripts
+    │   ├── gulpfile.js
+    │   ├── tracking
+    │   │   ├── gao_tracking_dg.js
+    │   │   └── gao_tracking_optim.js
+    │   ├── url_handling
+    │   │   ├── appendURLToURL.js
+    │   │   ├── url-scanner-util.js
+    │   │   ├── urlAPIFetch.js
+    │   │   ├── urlParameterDisplayToggle.js
+    │   │   └── urlQueryParamParse.js
+    │   └── utils
+    │       └── truncate.js
+    └── styles
+        └── css
+            ├── utils
+            │   └── responsiveType.css
+            └── web_type
+                └── remix_icons.css
+```
 
-3. `truncate.js`: This script is used to truncate text content based on a specified limit.
+JavaScript Files
 
-4. `url-scanner-util.js`: This script includes utility functions for URL scanning, including URL validation and animation of rows.
+1. appendURLToURL.js: Appends a URL to another URL upon a button click event.
+2. truncate.js: Truncates text content based on a specified limit.
+3. url-scanner-util.js: Includes utility functions for URL scanning, including URL validation and animation of rows.
+4. urlAPIFetch.js: Fetches data from an API and populates the data on the page.
+5. urlParameterDisplayToggle.js: Handles the display of elements based on the presence of URL parameters.
+6. gao_tracking_optim.js: Handles Google Analytics and Google Tag Manager integration, form submissions, and click events.
+7. urlQueryParamParse.js: Parses URL query parameters, providing functionality to get, set, and remove parameters from the query string.
 
-5. `urlAPIFetch.js`: This script is responsible for fetching data from an API and populating the data on the page.
+CSS Files
 
-6. `urlParameterDisplayToggle.js`: This script handles the display of elements based on the presence of URL parameters.
+1. responsiveType.css: Contains media queries to handle typography responsiveness across different screen sizes.
 
-7. `gao_tracking_optim.js`: This script is responsible for Google Analytics and Google Tag Manager integration. It also handles form submissions and click events, sending relevant data to Google Analytics.
+Build Tasks
 
-8. `urlQueryParamParse.js`: This script is a utility for parsing URL query parameters. It provides functionality to get, set, and remove parameters from the query string. It also includes a feature to append hidden input fields to forms based on the query parameters.
+The gulpfile.js defines several tasks for building the project:
+
+- minify: Minifies the JavaScript files in the scripts/ directory and outputs them to the build/ directory.
+- minify-css: Minifies the CSS files in the styles/ directory and outputs them to the build/ directory.
+- default: Runs the minify and minify-css tasks in parallel.
+
+To run the build tasks, use the following command:
+```
+gulp
+```
+
+Best Practices
+
+This project follows several best practices in software development:
+
+- Modularity: Each file or module has a single responsibility, making the code easier to understand, test, and maintain.
+- Immutability: The Gulp tasks do not modify the original source files; they produce new, minified versions of the files.
+- Functional Programming: The Gulp tasks use a pipeline of functions to transform the input files.

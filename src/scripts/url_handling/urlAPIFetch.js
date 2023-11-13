@@ -1,28 +1,24 @@
 // Function to fetch data from the API and populate the data on the page
-function fetchDataAndPopulate() {
+const fetchDataAndPopulate = async () => {
     try {
         // Extract the URL from the query parameter
-        var urlParams = new URLSearchParams(window.location.search);
-        var inputURL = urlParams.get('pasteURLinput');
+        const urlParams = new URLSearchParams(window.location.search);
+        const inputURL = urlParams.get('pasteURLinput');
 
         // If no URL, exit the function
         if (!inputURL) throw 'No URL parameter found';
 
         // Decode the URL
-        var decodedURL = decodeURIComponent(inputURL);
+        const decodedURL = decodeURIComponent(inputURL);
 
         // Fetch data from the API
-        fetch(`https://jsonlink.io/api/extract?url=${decodedURL}`)
-            .then(response => response.json())
-            .then(data => {
-                // Populate the data on the page
-                populateData(data);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
+        const response = await fetch(`https://jsonlink.io/api/extract?url=${decodedURL}`);
+        const data = await response.json();
+
+        // Populate the data on the page
+        populateData(data);
     } catch (error) {
-        console.error(error);
+        console.error('Error fetching data:', error);
         populateData({
             url: null,
             title: null,
@@ -33,7 +29,7 @@ function fetchDataAndPopulate() {
 }
 
 // Function to populate the data
-function populateData(responseData) {
+const populateData = (responseData) => {
     // Populate the data on the page
     document.querySelector('[data-link-meta-url]').textContent = responseData.url || '';
     document.querySelector('[data-mata-link-title]').textContent = responseData.title || '';
